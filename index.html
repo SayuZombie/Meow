@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Valentine's Day, Rachana!</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts for stylish text -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico|Dancing+Script|Roboto:400,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Canvas for falling hearts background -->
+    <canvas id="heartCanvas"></canvas>
+    
+    <!-- Audio element for background song (hidden) -->
+    <audio id="bg-music" preload="auto">
+      <source src="./y2mate.com - Ruth B  Dandelions Sped Up  Audio Edit.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Main content container -->
+    <div class="container">
+      <header>
+        <h1>
+          Happy Valentine's Day, Rachana! <span class="emoji">🐾</span>
+        </h1>
+      </header>
+
+      <section class="content">
+        <!-- Button Container with Circular Image and Orbiting Cat Emoji -->
+        <div id="button-container">
+          <div class="orbit-container">
+            <div class="circle-image">
+              <img src="./14-02-2025 19_11_47.png" alt="Cute Cat Image" />
+            </div>
+            <div class="orbit-emoji-wrapper">
+              <div class="orbit-emoji">💖🐈</div>
+            </div>
+          </div>
+          <button id="reveal-button">I Meow You💓</button>
+        </div>
+
+        <!-- Letter Section (hidden initially) -->
+        <div id="letter-section" class="hidden">
+          <div class="glitter-container">
+            <!-- 10 glitter dust elements -->
+            <span class="glitter"></span>
+            <span class="glitter"></span>
+            <span class="glitter"></span>
+            <span class="glitter"></span>
+            <span class="glitter"></span>
+            <span class="glitter"></span>
+            <span class="glitter"></span>
+            <span class="glitter"></span>
+            <span class="glitter"></span>
+            <span class="glitter"></span>
+          </div>
+          <div class="letter-text">
+            <p>
+              You've stolen my heart like the cutest little kitten – forever my purr-fect match! <span class="emoji">🥹❤️</span>
+            </p>
+            <p>
+              Though we haven’t met yet, I feel as though a little piece of your heart shines through your love for cats. Their gentle purrs and playful charm remind me of the joy you must bring into every room.
+            </p>
+            <p>
+              I hope fate brings us together soon—until then, may your days be filled with delightful whiskers and soft, comforting purrs.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cat Fact Section -->
+        <section id="cat-fact-section">
+          <button id="cat-fact-btn">Show a Cat Fact</button>
+          <p id="cat-fact"></p>
+        </section>
+
+      <footer>
+        <p class="signature">
+          With love,<br />
+          ✨Zombie🐈‍⬛
+        </p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

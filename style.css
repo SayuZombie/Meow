@@ -1,0 +1,309 @@
+/* Reset and basic styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure full height and smooth scrolling on iOS */
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #f8cdda, #1d2b64);
+}
+
+/* Canvas for falling hearts */
+#heartCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;  /* Allow touch events to pass through */
+}
+
+/* Main container styling */
+.container {
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.95);
+  margin: 60px auto;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header styling */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+header h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5em;
+  color: #d6336c;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+header h1 .emoji {
+  font-size: 1.5em;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Content styling */
+.content {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* Button container styling */
+#button-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Orbit container for circle image and revolving emoji */
+.orbit-container {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 0 auto 10px;
+}
+.circle-image {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.circle-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.orbit-emoji-wrapper {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  top: 0;
+  left: 0;
+  /* Rotates counterclockwise */
+  animation: rotateEmoji 5s linear infinite;
+}
+.orbit-emoji {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+}
+@keyframes rotateEmoji {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+/* Reveal button styling */
+#reveal-button {
+  display: block;
+  background-color: #ff6f61;
+  border: none;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin: 0 auto;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#reveal-button:hover {
+  background-color: #ff3b2e;
+  transform: scale(1.05);
+}
+
+/* Letter section styling */
+#letter-section {
+  margin-top: 30px;
+  position: relative;
+  padding: 20px;
+  border: 2px dashed rgba(211, 51, 108, 0.7);
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+#letter-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stylish letter text */
+.letter-text p {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.4em;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+/* Glitter dust background effect */
+.glitter-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+.glitter {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,105,180,0.8) 40%, rgba(255,215,0,0) 70%);
+  opacity: 0;
+  border-radius: 50%;
+  animation: glitter 2s linear infinite;
+}
+.glitter:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+.glitter:nth-child(2) { top: 30%; left: 70%; animation-delay: 0.5s; }
+.glitter:nth-child(3) { top: 50%; left: 40%; animation-delay: 1s; }
+.glitter:nth-child(4) { top: 20%; left: 80%; animation-delay: 1.5s; }
+.glitter:nth-child(5) { top: 70%; left: 10%; animation-delay: 2s; }
+.glitter:nth-child(6) { top: 80%; left: 50%; animation-delay: 2.5s; }
+.glitter:nth-child(7) { top: 40%; left: 15%; animation-delay: 0.8s; }
+.glitter:nth-child(8) { top: 60%; left: 85%; animation-delay: 1.2s; }
+.glitter:nth-child(9) { top: 15%; left: 55%; animation-delay: 1.8s; }
+.glitter:nth-child(10) { top: 65%; left: 35%; animation-delay: 2.2s; }
+
+@keyframes glitter {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.5); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+/* Cat Fact Section styling */
+#cat-fact-section {
+  margin-top: 20px;
+  text-align: center;
+}
+#cat-fact-btn {
+  background-color: #ff6f61;
+  border: none;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 10px;
+}
+#cat-fact-btn:hover {
+  background-color: #ff3b2e;
+  transform: scale(1.05);
+}
+#cat-fact {
+  margin-top: 15px;
+  font-size: 1.1em;
+  color: #444;
+}
+
+/* Cat Gallery Section styling */
+#cat-gallery {
+  margin-top: 30px;
+  text-align: center;
+}
+#cat-gallery h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2em;
+  color: #d6336c;
+  margin-bottom: 15px;
+}
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.gallery img {
+  width: 30%;
+  max-width: 150px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+.gallery img:hover {
+  transform: scale(1.1);
+}
+
+/* Footer styling */
+footer {
+  text-align: center;
+  font-size: 1em;
+  color: #555;
+  margin-top: 20px;
+}
+.signature {
+  font-style: italic;
+}
+
+/* Responsive adjustments for iPhone 11 and similar devices */
+@media (max-width: 600px) {
+  .container {
+    margin: 20px;
+    padding: 15px;
+  }
+  header h1 {
+    font-size: 2em;
+  }
+  .letter-text p {
+    font-size: 1.2em;
+  }
+  .gallery img {
+    width: 45%;
+  }
+}
+
+@media (max-width: 500px) {
+  .orbit-container {
+    width: 200px;
+    height: 200px;
+  }
+  .circle-image {
+    top: 10px;
+    left: 10px;
+    width: 180px;
+    height: 180px;
+  }
+  .orbit-emoji-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+  .orbit-emoji {
+    font-size: 1.8em;
+  }
+}
